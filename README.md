@@ -7,7 +7,7 @@ You can contact me at:
 
 @: eliott.knight@icloud.com 
 
-Twitter: @ellioto0 Ino 
+Twitter: @ellioto0
 
 Istagram: ellio_75
 
