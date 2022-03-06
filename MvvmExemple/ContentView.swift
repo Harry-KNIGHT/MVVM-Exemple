@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var friendVM = FriendViewModel()
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(friendVM.friends, id: \.self) {
-                    Text($0)
+        TabView {
+            FriendsListView()
+                .tabItem {
+                    Label("Friends", systemImage: "list.dash")
                 }
-                .onDelete(perform: friendVM.deletFriend)
-                .onMove(perform: friendVM.moveFriend)
-            }
-            .navigationTitle("My friends")
-            .toolbar {
-                EditButton()
-            }
         }
     }
     
