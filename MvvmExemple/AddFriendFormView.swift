@@ -14,6 +14,7 @@ struct AddFriendFormView: View {
     var body: some View {
         Form {
             TextField("Friend name", text: $vm.friendName)
+            if vm.friendName.count > 3 {
                 Button("Save") {
                     let friend = Friend(name: vm.friendName)
                     vm.newFriends.append(friend)
@@ -22,6 +23,7 @@ struct AddFriendFormView: View {
                 }
             }
         }
+    }
 }
 
 struct AddFriendFormView_Previews: PreviewProvider {

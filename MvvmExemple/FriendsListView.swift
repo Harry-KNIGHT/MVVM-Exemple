@@ -22,7 +22,7 @@ struct FriendsListView: View {
                     .onMove(perform: friendVM.moveFriend)
                 }
                 
-                Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friend at school") : Text("")) {
+                Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friends") : Text("")) {
                     ForEach(friendVM.newFriends) {
                         Text($0.name)
                     }
