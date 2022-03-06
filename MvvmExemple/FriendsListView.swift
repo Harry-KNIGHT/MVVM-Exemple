@@ -26,8 +26,8 @@ struct FriendsListView: View {
                     ForEach(friendVM.newFriends) {
                         Text($0.name)
                     }
-                    .onMove(perform: friendVM.moveFriend)
-                    .onDelete(perform: friendVM.deletFriend)
+                    .onMove(perform: friendVM.moveNewFriend)
+                    .onDelete(perform: friendVM.deletNewFriend)
                 }
             }
             .sheet(isPresented: $friendVM.showingAddFriend) {
