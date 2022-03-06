@@ -14,15 +14,14 @@ struct AddFriendFormView: View {
     var body: some View {
         Form {
             TextField("Friend name", text: $vm.friendName)
-            if !vm.newFriends.isEmpty {
                 Button("Save") {
                     let friend = Friend(name: vm.friendName)
                     vm.newFriends.append(friend)
                     self.presentationMode.wrappedValue.dismiss()
+                    vm.friendName = ""
                 }
             }
         }
-    }
 }
 
 struct AddFriendFormView_Previews: PreviewProvider {
