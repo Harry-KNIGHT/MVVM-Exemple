@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView {
             FriendsListView()
                 .tabItem {
-                    Label("Friends", systemImage: "list.dash")
+                    Label("Friends", systemImage: "person.3.fill")
                 }
         }
     }

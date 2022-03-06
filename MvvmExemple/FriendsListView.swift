@@ -9,42 +9,48 @@ import SwiftUI
 
 struct FriendsListView: View {
     @StateObject var friendVM = FriendViewModel()
-    
     var body: some View {
         NavigationView {
-            List {
-                
-                Section {
-                    ForEach(friendVM.friends, id: \.self) {
-                        Text($0)
+            VStack {
+                List {
+                    Section(header: Text("Best Ones")) {
+                        ForEach(friendVM.friends, id: \.self) {
+                            Text($0)
+                        }
+                        .onDelete(perform: friendVM.deletFriend)
+                        .onMove(perform: friendVM.moveFriend)
                     }
-                    .onDelete(perform: friendVM.deletFriend)
-                    .onMove(perform: friendVM.moveFriend)
+                    
+                    Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friends") : Text("")) {
+                        ForEach(friendVM.newFriends) {
+                            Text($0.name)
+                        }
+                        .onMove(perform: friendVM.moveNewFriend)
+                        .onDelete(perform: friendVM.deletNewFriend)
+                    }
                 }
+                .sheet(isPresented: $friendVM.showingAddFriend) {
+                    AddFriendFormView(vm: friendVM)
+                }
+                .navigationTitle("My friends")
                 
-                Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friends") : Text("")) {
-                    ForEach(friendVM.newFriends) {
-                        Text($0.name)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
                     }
-                    .onMove(perform: friendVM.moveNewFriend)
-                    .onDelete(perform: friendVM.deletNewFriend)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            friendVM.showingAddFriend = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                    }
                 }
             }
-            .sheet(isPresented: $friendVM.showingAddFriend) {
-                AddFriendFormView(vm: friendVM)
-            }
-            .navigationTitle("My friends")
-            
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        friendVM.showingAddFriend = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+            .searchable(text: $friendVM.searchFriend) {
+                ForEach(friendVM.searchFriendsResult, id: \.self) { result in
+                    Text("Are you looking for \(result) ?").searchCompletion(result)
+                    
                 }
             }
             

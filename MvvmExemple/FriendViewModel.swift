@@ -13,7 +13,7 @@ class FriendViewModel: ObservableObject {
     @Published var friendName = ""
     @Published var showingAddFriend = false
     @Published var friends = ["Tony", "Axel", "Micka", "Britney", "Léna", "John", "Lucas", "Jax"]
-    
+    @Published var searchFriend: String = ""
     // Delet friends
     func deletFriend(at offsets: IndexSet) {
         friends.remove(atOffsets: offsets)
@@ -30,6 +30,14 @@ class FriendViewModel: ObservableObject {
     
     func moveNewFriend(from offsets: IndexSet, to destination: Int) {
         newFriends.move(fromOffsets: offsets, toOffset: destination)
+    }
+    
+    var searchFriendsResult: [String] {
+        if searchFriend.isEmpty {
+            return friends
+            }else {
+                return friends.filter { $0.contains(searchFriend)}
+            }
     }
 }
 
