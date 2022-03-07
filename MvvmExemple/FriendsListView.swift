@@ -29,8 +29,8 @@ struct FriendsListView: View {
                         .onDelete(perform: friendVM.deletNewFriend)
                     }
                 }
-                .sheet(isPresented: $friendVM.showingAddFriend) {
-                    AddFriendFormView(vm: friendVM)
+                .sheet(isPresented: $friendVM.showingSheetAddFriend) {
+                    AddFriendFormView(friendViewModel: friendVM)
                 }
                 .navigationTitle("My friends")
                 
@@ -40,7 +40,7 @@ struct FriendsListView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            friendVM.showingAddFriend = true
+                            friendVM.showingSheetAddFriend = true
                         } label: {
                             Image(systemName: "plus")
                         }

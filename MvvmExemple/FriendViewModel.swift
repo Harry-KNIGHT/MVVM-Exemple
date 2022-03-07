@@ -11,7 +11,7 @@ import Foundation
 class FriendViewModel: ObservableObject {
     @Published var newFriends = [Friend]()
     @Published var friendName = ""
-    @Published var showingAddFriend = false
+    @Published var showingSheetAddFriend = false
     @Published var friends = ["Tony", "Axel", "Micka", "Britney", "Léna", "John", "Lucas", "Jax"]
     @Published var searchFriend: String = ""
     // Delet friends
@@ -35,9 +35,9 @@ class FriendViewModel: ObservableObject {
     var searchFriendsResult: [String] {
         if searchFriend.isEmpty {
             return friends
-            }else {
-                return friends.filter { $0.contains(searchFriend)}
-            }
+        }else {
+            return friends.filter { $0.contains(searchFriend)}
+        }
     }
 }
 

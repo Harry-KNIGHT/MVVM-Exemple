@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct AddFriendFormView: View {
-    @ObservedObject var vm: FriendViewModel
+    @ObservedObject var friendViewModel: FriendViewModel
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         Form {
-            TextField("Friend name", text: $vm.friendName)
-            if vm.friendName.count > 3 {
-                Button("Save") {
-                    let friend = Friend(name: vm.friendName)
-                    vm.newFriends.append(friend)
-                    self.presentationMode.wrappedValue.dismiss()
-                    vm.friendName = ""
+            Section(header: Text("Add new friend ! 😜")) {
+                TextField("Friend name", text: $friendViewModel.friendName)
+                if friendViewModel.friendName.count > 3 {
+                    Button("Save") {
+                        let friend = Friend(name: friendViewModel.friendName)
+                        friendViewModel.newFriends.append(friend)
+                        self.presentationMode.wrappedValue.dismiss()
+                        friendViewModel.friendName = ""
+                    }
                 }
             }
         }
@@ -28,7 +30,7 @@ struct AddFriendFormView: View {
 
 struct AddFriendFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFriendFormView(vm: FriendViewModel())
+        AddFriendFormView(friendViewModel: FriendViewModel())
         
     }
 }
