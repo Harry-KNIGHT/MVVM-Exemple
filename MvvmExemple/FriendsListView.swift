@@ -20,13 +20,14 @@ struct FriendsListView: View {
                         .onDelete(perform: friendVM.deletFriend)
                         .onMove(perform: friendVM.moveFriend)
                     }
-                    
+                    if friendVM.newFriends.count >= 1 {
                     Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friends") : Text("")) {
                         ForEach(friendVM.newFriends) {
                             Text($0.name)
                         }
                         .onMove(perform: friendVM.moveNewFriend)
                         .onDelete(perform: friendVM.deletNewFriend)
+                    }
                     }
                 }
                 .sheet(isPresented: $friendVM.showingSheetAddFriend) {
