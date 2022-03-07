@@ -13,21 +13,24 @@ struct FriendsListView: View {
         NavigationView {
             VStack {
                 List {
-                    Section(header: Text("Best Ones")) {
-                        ForEach(friendVM.friends, id: \.self) {
-                            Text($0)
+                    if friendVM.friends.count >= 1 {
+                        Section(header: Text("Best Ones")) {
+                            ForEach(friendVM.friends, id: \.self) {
+                                Text($0)
+                            }
+                            
+                            .onDelete(perform: friendVM.deletFriend)
+                            .onMove(perform: friendVM.moveFriend)
                         }
-                        .onDelete(perform: friendVM.deletFriend)
-                        .onMove(perform: friendVM.moveFriend)
                     }
                     if friendVM.newFriends.count >= 1 {
-                    Section(header: !friendVM.newFriends.isEmpty ?  Text("My new friends") : Text("")) {
-                        ForEach(friendVM.newFriends) {
-                            Text($0.name)
+                        Section(header: friendVM.newFriends.count > 1 ?  Text("My new friends") : Text("My new friend")) {
+                            ForEach(friendVM.newFriends) {
+                                Text($0.name)
+                            }
+                            .onMove(perform: friendVM.moveNewFriend)
+                            .onDelete(perform: friendVM.deletNewFriend)
                         }
-                        .onMove(perform: friendVM.moveNewFriend)
-                        .onDelete(perform: friendVM.deletNewFriend)
-                    }
                     }
                 }
                 .sheet(isPresented: $friendVM.showingSheetAddFriend) {
