@@ -14,6 +14,8 @@ class FriendViewModel: ObservableObject {
     @Published var showingSheetAddFriend = false
     @Published var friends = ["Tony", "Axel", "Micka", "Britney", "Léna", "John", "Lucas", "Jax"]
     @Published var searchFriend: String = ""
+    
+    @Published var showAlert = false
     // Delet friends
     func deletFriend(at offsets: IndexSet) {
         friends.remove(atOffsets: offsets)
@@ -23,7 +25,16 @@ class FriendViewModel: ObservableObject {
         friends.move(fromOffsets: offsets, toOffset: destination)
     }
     
-    
+    func addFriend() {
+        if friendName.count >= 3 {
+        showAlert = true
+        } else {
+            return
+        }
+        let friend = Friend(name: friendName)
+        newFriends.append(friend)
+       
+    }
     func deletNewFriend(at offsets: IndexSet) {
         newFriends.remove(atOffsets: offsets)
     }

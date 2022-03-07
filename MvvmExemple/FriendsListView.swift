@@ -41,8 +41,10 @@ struct FriendsListView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             friendVM.showingSheetAddFriend = true
+                            friendVM.friendName = ""
                         } label: {
                             Image(systemName: "plus")
+                                .font(.title3)
                         }
                     }
                 }
