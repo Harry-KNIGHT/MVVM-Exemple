@@ -6,16 +6,26 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class FriendViewModel: ObservableObject {
     @Published var newFriends = [Friend]()
     @Published var friendName = ""
     @Published var showingSheetAddFriend = false
-    @Published var friends = ["Tony", "Axel", "Micka", "Britney", "Léna", "John", "Lucas", "Jax"]
+    @Published var friends: [Friend] = [
+        Friend(name: "Tony Thomas", isLiked: false),
+        Friend(name: "Axel LB", isLiked: false),
+        Friend(name: "Mickael Mas", isLiked: true),
+        Friend(name: "Britney", isLiked: false),
+        Friend(name: "Léna Hachem", isLiked: true),
+        Friend(name: "John L.", isLiked: false),
+        Friend(name: "Jax Minou", isLiked: true),
+        Friend(name: "Lucas Abil", isLiked: false)
+    ]
     @Published var searchFriend: String = ""
-    
     @Published var showAlert = false
+    
     // Delet friends
     func deletFriend(at offsets: IndexSet) {
         friends.remove(atOffsets: offsets)
@@ -27,13 +37,13 @@ class FriendViewModel: ObservableObject {
     
     func addFriend() {
         if friendName.count >= 3 {
-        showAlert = true
+            showAlert = true
         } else {
             return
         }
-        let friend = Friend(name: friendName)
+        let friend = Friend(name: friendName, isLiked: false)
         newFriends.append(friend)
-       
+        
     }
     func deletNewFriend(at offsets: IndexSet) {
         newFriends.remove(atOffsets: offsets)
@@ -41,14 +51,6 @@ class FriendViewModel: ObservableObject {
     
     func moveNewFriend(from offsets: IndexSet, to destination: Int) {
         newFriends.move(fromOffsets: offsets, toOffset: destination)
-    }
-    
-    var searchFriendsResult: [String] {
-        if searchFriend.isEmpty {
-            return friends
-        }else {
-            return friends.filter { $0.contains(searchFriend)}
-        }
     }
 }
 

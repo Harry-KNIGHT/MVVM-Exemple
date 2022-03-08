@@ -15,6 +15,7 @@
 		3C1245E327D41F6200EBA823 /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1245E227D41F6200EBA823 /* FriendsListView.swift */; };
 		3C1245E527D41FF300EBA823 /* AddFriendFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1245E427D41FF300EBA823 /* AddFriendFormView.swift */; };
 		3C1245E727D4CDD700EBA823 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1245E627D4CDD700EBA823 /* FriendModel.swift */; };
+		3C675B8727D7CD66001E01A4 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C675B8627D7CD66001E01A4 /* FriendDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		3C1245E227D41F6200EBA823 /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		3C1245E427D41FF300EBA823 /* AddFriendFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendFormView.swift; sourceTree = "<group>"; };
 		3C1245E627D4CDD700EBA823 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		3C675B8627D7CD66001E01A4 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3C1245E427D41FF300EBA823 /* AddFriendFormView.swift */,
 				3C1245E227D41F6200EBA823 /* FriendsListView.swift */,
 				3C1245E027D40BF300EBA823 /* FriendViewModel.swift */,
+				3C675B8627D7CD66001E01A4 /* FriendDetailView.swift */,
 				3C1245E627D4CDD700EBA823 /* FriendModel.swift */,
 				3C1245D427D4084400EBA823 /* Assets.xcassets */,
 				3C1245D627D4084400EBA823 /* Preview Content */,
@@ -155,6 +158,7 @@
 				3C1245E327D41F6200EBA823 /* FriendsListView.swift in Sources */,
 				3C1245E527D41FF300EBA823 /* AddFriendFormView.swift in Sources */,
 				3C1245E127D40BF300EBA823 /* FriendViewModel.swift in Sources */,
+				3C675B8727D7CD66001E01A4 /* FriendDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,11 +15,13 @@ struct AddFriendFormView: View {
         Form {
             Section(header: Text("Add new friend ! 😜")) {
                 TextField("Friend name", text: $friendViewModel.friendName)
+                if friendViewModel.friendName.count >= 2 {
                 Button("Save") {
                     friendViewModel.addFriend()
-                }.alert("Ajouter \(friendViewModel.friendName) comme ami ?", isPresented: $friendViewModel.showAlert) {
+                }.alert("Add \(friendViewModel.friendName) as friend ?", isPresented: $friendViewModel.showAlert) {
                     Button("Oui") { self.presentationMode.wrappedValue.dismiss() }
                     Button("Non") { friendViewModel.friendName = "" }
+                    }
                 }
             }
         }

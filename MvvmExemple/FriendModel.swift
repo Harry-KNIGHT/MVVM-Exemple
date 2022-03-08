@@ -9,5 +9,6 @@ import Foundation
 
 struct Friend: Identifiable {
     var id = UUID()
-    let name: String
+    var name: String
+    var isLiked: Bool
 }

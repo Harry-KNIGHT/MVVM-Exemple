@@ -13,12 +13,14 @@ struct FriendsListView: View {
         NavigationView {
             VStack {
                 List {
-                    if friendVM.friends.count >= 1 {
+                    if !friendVM.friends.isEmpty {
                         Section(header: Text("Best Ones")) {
-                            ForEach(friendVM.friends, id: \.self) {
-                                Text($0)
+                            ForEach(friendVM.friends) { friend in
+                                NavigationLink(destination: FriendDetailView(friend: friend)) {
+                                    Text(friend.name)
+                                    Spacer()
+                                }
                             }
-                            
                             .onDelete(perform: friendVM.deletFriend)
                             .onMove(perform: friendVM.moveFriend)
                         }
@@ -53,12 +55,7 @@ struct FriendsListView: View {
                     }
                 }
             }
-            .searchable(text: $friendVM.searchFriend) {
-                ForEach(friendVM.searchFriendsResult, id: \.self) { result in
-                    Text("Are you looking for \(result) ?").searchCompletion(result)
-                    
-                }
-            }
+            .searchable(text: $friendVM.searchFriend)
             
         }
     }
